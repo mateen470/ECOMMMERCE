@@ -10,6 +10,7 @@ const fileUpload = require("express-fileupload");
 require("./DATABASE/connection");
 
 const router = require("./ROUTES/router");
+const image_router = require("./ROUTES/imageUploadRoute");
 
 const app = express();
 
@@ -21,7 +22,9 @@ app.use(
     useTempFiles: true,
   })
 );
-app.use("/", router);
+
+app.use("/shoe-cosmos", router);
+app.use("/shoe-cosmos/avatar", image_router);
 
 const PORT = process.env.PORT || 5000;
 
